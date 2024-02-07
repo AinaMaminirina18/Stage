@@ -1,0 +1,57 @@
+MDScreen:
+    name:'login'
+    md_bg_color : '#c3c3c3'
+    MDCard:
+        size_hint: None, None
+        size: 300, 400
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        elevation: 2
+        padding: 25
+        spacing: 25
+        orientation: 'vertical'
+
+        MDLabel:
+            id: welcome_label
+            text: "Tongasoa"
+            font_size: 35
+            halign: 'center'
+            size_hint_y: None
+            padding_y: 25
+
+        MDTextField:
+            id: user
+            hint_text: "Username"
+            icon_right: "account"
+            size_hint_x: None
+            width: 200
+            font_size: 18
+            pos_hint: {"center_x":.5, "center_y": .5}
+
+        MDFloatLayout:
+            orientation:'horizontal'
+            MDTextField:
+                id: password
+                hint_text: "Password"
+                size_hint_x: None
+                width: 200
+                font_size: 18
+                pos_hint: {"center_x":.5, "center_y": .5}
+                password: True
+
+            MDIconButton:
+                icon: "eye-off"
+                pos_hint: {"center_x":.85, "center_y": .5}
+                pos: password.width - self.width + dp(8), 0
+                theme_text_color: "Hint"
+                on_release:
+                    self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                    password.password = False if password.password is True else True
+
+        MDRoundFlatButton:
+            text: "Entrer"
+            font_size: 19
+            pos_hint: {"center_x": 0.5, "center_y":.4}
+            size_hint_x: 1
+            on_press:
+                app.logger()
+                root.manager.transition.direction = "left"

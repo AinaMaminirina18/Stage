@@ -1,0 +1,152 @@
+MDScreen:
+    name : 'rapporrt'
+    MDFloatLayout:
+        orientation: 'vertical'
+        md_bg_color : '#c3c3c3'
+        MDFloatLayout:
+            orientation:'horizontal'
+            pos_hint: {"center_x": 0.05, "center_y": 0.95}
+            size_hint:2, .1
+            md_bg_color: 'teal'
+            MDIconButton:
+                icon: 'arrow-left'
+                theme_text_color: "Custom"
+                text_color: 'white'
+                pos_hint: {"center_x": 0.49, "center_y": .5}
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "choix"
+            MDLabel:
+                text: 'Retour'
+                pos_hint: { "center_x":1,"center_y": .5}
+                theme_text_color: "Custom"
+                text_color: 'white'
+
+        MDFloatLayout:
+            orientation: 'horizontal'
+            size_hint:1, .2
+            spacing:4
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            MDRoundFlatIconButton:
+                id: nav_icon1
+                icon: 'cellphone'
+                text: 'Communication'
+                icon_color: 'teal'
+                md_bg_color: 'white'
+                text_color: 'teal'
+                pos_hint: {"center_x": 0.2, "center_y": 2.3}
+                on_release: app.change_color(self)
+
+            MDRoundFlatIconButton:
+                id: nav_icon2
+                icon: 'snowflake'
+                text: 'Méteo'
+                icon_color: 'teal'
+                md_bg_color: 'white'
+                text_color: 'teal'
+                pos_hint: {"center_x": 0.42, "center_y": 2.3}
+                on_release: app.change_color(self)
+
+            MDRoundFlatIconButton:
+                id: nav_icon3
+                icon: 'antenna'
+                text: 'Réseau'
+                icon_color: 'teal'
+                md_bg_color: 'white'
+                text_color: 'teal'
+                pos_hint: {"center_x": 0.6, "center_y": 2.3}
+                on_release: app.change_color(self)
+
+            MDRoundFlatIconButton:
+                id: nav_icon4
+                icon: 'table-check'
+                text: 'Surveillance'
+                icon_color: 'teal'
+                md_bg_color: 'white'
+                text_color: 'teal'
+                pos_hint: {"center_x": 0.8, "center_y": 2.3}
+                on_release:app.change_color(self)
+
+        MDCard:
+            size_hint: None, None
+            size: 450, 490
+            pos_hint: {"center_x": 0.5, "center_y": 0.42}
+            padding: 20
+            spacing: 1
+            orientation: 'vertical'
+
+            MDTextField:
+                id: date
+                hint_text: "Date"
+                size_hint_x: None
+                width: 200
+                font_size: 18
+                pos_hint: {"center_x": 0.5, "center_y":.5}
+
+            MDTextField:
+                id: cat
+                hint_text: "Categorie"
+                size_hint_x: None
+                width: 200
+                font_size: 18
+                pos_hint: {"center_x": 0.5}
+
+            MDTextField:
+                id: nom
+                hint_text: "Nom"
+                size_hint_x: None
+                width: 200
+                font_size: 18
+                pos_hint: {"center_x": 0.5}
+
+            MDFloatLayout:
+                orientation: 'horizontal'
+                pos_hint: {"center_x": 0.5}
+                MDCheckbox:
+                    id: cat_check
+                    size_hint:.1, .2
+                    pos_hint: {"center_x": 0.1, "center_y": .5}
+
+                MDTextField:
+                    id: sous_cat_com
+                    disabled: False if cat_check.active else True
+                    hint_text: "Sous-catégorie"
+                    helper_text: "*Ne rien écrire si il y en a pas"
+                    helper_text_mode: 'persistent'
+                    size_hint_x: None
+                    width: 200
+                    font_size: 18
+                    pos_hint: {"center_x": 0.5, "center_y":.5}
+
+            MDFloatLayout:
+                orientation: 'horizontal'
+                pos_hint: {"center_x": 0.5, "center_y": .4}
+                MDLabel:
+                    id:text
+                    text: 'Dureé de panne: '
+                    font_size: 18
+                    pos_hint: {"center_x": 0.8, "center_y": 1}
+
+                MDTextField:
+                    id:De
+                    hint_text: "De"
+                    size_hint_x: .3
+                    width: 200
+                    font_size: 18
+                    pos_hint: {"center_x": 0.2, "center_y": .5}
+                    on_focus: app.show_time_picker( self, *args)
+
+                MDTextField:
+                    id: À
+                    hint_text: "À"
+                    size_hint_x: .3
+                    width: 200
+                    font_size: 18
+                    pos_hint: {"center_x": 0.8, "center_y": .5}
+                    on_focus: app.show_time_picker( self, *args)
+
+            MDRaisedButton:
+                text: "Entrer"
+                font_size: 19
+                pos_hint: {"center_x": 0.5, "center_y":.4}
+                size_hint_x: 1

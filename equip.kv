@@ -1,0 +1,258 @@
+MDScreen:
+    name: 'rapport'
+    MDFillRoundFlatIconButton:
+        pos_hint:{"center_x":.12,"center_y":.95}
+        md_bg_color:'#377BFF'
+        icon: 'arrow-left'
+        icon_size: '20sp'
+        theme_icon_color:'Custom'
+        icon_color: 'white'
+        text:'Retour'
+        theme_text_color:'Custom'
+        text_color: 'white'
+        font_size: 15
+        icon_size: 20
+        font_name:"poppins"
+        size_hint_x:.2
+        on_release:
+            root.manager.transition.direction = "right"
+            root.manager.current = "centre"
+    MDFloatLayout:
+        orientation:'vertical'
+        md_bg_color: '#377BFF'
+        pos_hint:{"center_x": .5, "center_y":.45}
+        size_hint: .8,.8
+        radius:[20]
+        MDBoxLayout:
+            md_bg_color:'#F5EC0E'
+            size_hint: .4, .1
+            pos_hint:{"center_x": .25, "center_y":1}
+            radius:[10]
+            elevation: 2
+            MDLabel:
+                text: 'Rapport de panne'
+                halign:'center'
+                font_size: 18
+                font_name:"poppins"
+    MDFloatLayout:
+        orientation: 'horizontal'
+        MDFillRoundFlatIconButton:
+            id: nav_icon1
+            pos_hint:{"center_x":.22,"center_y":.75}
+            md_bg_color:'white'
+            icon: 'cellphone'
+            icon_size: '20sp'
+            theme_icon_color:'Custom'
+            icon_color: 'black'
+            text:'Communication'
+            theme_text_color:'Custom'
+            text_color: 'black'
+            font_size: 15
+            font_name:"poppins"
+            size_hint: .2, None
+            on_release: app.change_color(self)
+        MDFillRoundFlatIconButton:
+            id: nav_icon2
+            pos_hint:{"center_x":.41,"center_y":.75}
+            md_bg_color:'white'
+            icon: './Image/cloud.png'
+            icon_size: '20sp'
+            theme_icon_color:'Custom'
+            icon_color: 'black'
+            text:'Méteo'
+            theme_text_color:'Custom'
+            text_color: 'black'
+            font_name:"poppins"
+            font_size: 15
+            size_hint: .15, None
+            on_release: app.change_color(self)
+        MDFillRoundFlatIconButton:
+            id: nav_icon3
+            pos_hint:{"center_x":.58,"center_y":.75}
+            md_bg_color:'white'
+            icon: './Image/signal_cellular.png'
+            icon_size: '20sp'
+            theme_icon_color:'Custom'
+            icon_color: 'black'
+            text:'Réseau'
+            theme_text_color:'Custom'
+            text_color: 'black'
+            font_name:"poppins"
+            font_size: 15
+            size_hint: .15, None
+            on_release: app.change_color(self)
+        MDFillRoundFlatIconButton:
+            id: nav_icon4
+            pos_hint:{"center_x":.775,"center_y":.75}
+            md_bg_color:'white'
+            icon: './Image/videocam.png'
+            icon_size: '20sp'
+            theme_icon_color:'Custom'
+            icon_color: 'black'
+            text:'Surveillance'
+            theme_text_color:'Custom'
+            text_color: 'black'
+            font_name:"poppins"
+            font_size: 15
+            size_hint: .2, None
+            on_release: app.change_color(self)
+
+        MDLabel:
+            text:"Date de la panne"
+            pos_hint:{"center_x":.63,"center_y":.67}
+            font_name: "poppins"
+            theme_text_color:'Custom'
+            text_color: 'white'
+            font_size: 14
+
+        MDTextField:
+            mode: 'round'
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.25,"center_y":.6}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .2,None
+            radius:[10]
+
+        MDIconButton:
+            icon:'./Image/calendar_month.png'
+            pos_hint:{"center_x":.35,"center_y":.6}
+
+        MDLabel:
+            text:"Categorie"
+            pos_hint:{"center_x":.63,"center_y":.52}
+            font_name: "poppins"
+            theme_text_color:'Custom'
+            text_color: 'white'
+            font_size: 14
+
+        MDTextField:
+            mode: 'round'
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.25,"center_y":.45}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .2,None
+            radius:[10]
+
+        MDLabel:
+            text:"Sous-categorie"
+            pos_hint:{"center_x":.955,"center_y":.67}
+            font_name: "poppins"
+            theme_text_color:'Custom'
+            text_color: 'white'
+            font_size: 14
+
+        MDTextField:
+            mode: 'round'
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.65,"center_y":.6}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .4,None
+            size_hint: .4,.1
+            radius:[10]
+
+        MDLabel:
+            text:"Nom du materiel"
+            pos_hint:{"center_x":.955,"center_y":.52}
+            font_name: "poppins"
+            theme_text_color:'Custom'
+            text_color: 'white'
+            font_size: 14
+
+        MDTextField:
+            mode: 'round'
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.65,"center_y":.45}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .4,None
+            radius:[10]
+
+        MDLabel:
+            text:"Durée de la panne"
+            pos_hint:{"center_x":.63,"center_y":.36}
+            font_name: "poppins"
+            theme_text_color:'Custom'
+            text_color: 'white'
+            font_size: 14
+
+        MDBoxLayout:
+            pos_hint:{"center_x":.425,"center_y":.3}
+            md_bg_color: "white"
+            orientation:'horizontal'
+            size_hint: .6,.09
+            radius:[10]
+            MDLabel:
+                text:"De"
+                font_name:"poppins"
+                pos_hint:{"center_x":.425,"center_y":.49}
+                halign:'center'
+
+            MDTextField:
+                mode: 'round'
+                hint_text_color_focus: 'black'
+                hint_text_color_normal: 'black'
+                text_color_focus: 'black'
+                font_name:"poppins"
+                pos_hint:{"center_x":0,"center_y":.495}
+                line_color_focus: 'white'
+                fill_color_normal: 'white'
+                line_color_normal: 'white'
+                size_hint: .4,None
+                radius:[10]
+
+            MDLabel:
+                text:"À"
+                font_name:"poppins"
+                pos_hint:{"center_x":.55,"center_y":.49}
+                halign:'center'
+
+            MDTextField:
+                mode: 'round'
+                hint_text_color_focus: 'black'
+                hint_text_color_normal: 'black'
+                text_color_focus: 'black'
+                font_name:"poppins"
+                pos_hint:{"center_x":0,"center_y":.495}
+                line_color_focus: 'white'
+                fill_color_normal: 'white'
+                line_color_normal: 'white'
+                size_hint: .4,None
+
+        MDFillRoundFlatButton:
+            pos_hint:{"center_x":.5,"center_y":.13}
+            md_bg_color:'white'
+            text:'Annuler'
+            theme_text_color:'Custom'
+            text_color: 'black'
+            font_name:"poppins"
+            font_size: 15
+            size_hint: .2,None
+
+        MDFillRoundFlatButton:
+            pos_hint:{"center_x":.75,"center_y":.13}
+            md_bg_color:'#F5EC0E'
+            text:'Enregistrer'
+            theme_text_color:'Custom'
+            text_color: 'black'
+            font_name:"poppins"
+            font_size: 15
+            size_hint: .2,None

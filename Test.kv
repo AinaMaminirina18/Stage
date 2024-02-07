@@ -1,0 +1,84 @@
+MDScreen:
+    name: "Test"
+    MDFloatLayout:
+        md_bg_color: 'red'
+        pos_hint:{"center_x":.68, "center_y":.5}
+        size_hint:.3, .75
+        radius:[20]
+        MDLabel:
+            text: "Connexion"
+            pos_hint:{"center_x":.5, "center_y":.8}
+            halign: 'center'
+            font_size: 25
+            font_name:'poppins'
+            theme_text_color: 'Custom'
+            text_color: 'white'
+        MDLabel:
+            text: 'Identifiant :'
+            font_size: 13
+            font_name:'poppins'
+            theme_text_color: 'Custom'
+            text_color: 'white'
+            pos_hint: {"center_x": .73, "center_y": .66}
+        MDTextField:
+            mode: 'round'
+            pos_hint:{"center_x": .5, "center_y":.6}
+            size_hint: .6, None
+            radius: [50]
+            line_color_focus: 'black'
+            text_color_focus: 'black'
+        MDLabel:
+            text: 'Mot de passe :'
+            font_size: 13
+            font_name:'poppins'
+            theme_text_color: 'Custom'
+            text_color: 'white'
+            pos_hint: {"center_x": .73, "center_y": .48}
+        MDTextField:
+            mode: 'round'
+            pos_hint:{"center_x": .5, "center_y":.42}
+            size_hint: .6, None
+            font_name:'poppins'
+            line_color_focus: 'black'
+            text_color_focus: 'black'
+        MDRaisedButton:
+            text: 'Connecter'
+            size_hint: .5, None
+            pos_hint:{"center_x": .5, "center_y":.2}
+            font_size: 15
+            font_name:'poppins'
+            md_bg_color: '#F5EC0E'
+
+    MDFloatLayout:
+        md_bg_color: '#377BFF'
+        pos_hint:{"center_x":.4, "center_y":.5}
+        size_hint:.3, .8
+        radius:[20]
+        elevation: 10
+        Image:
+            source: './Image/Ispm.png'
+            pos_hint:{"center_x":.5, "center_y":.8}
+            size_hint: .4, .4
+        MDLabel:
+            text: "{App Name}"
+            pos_hint:{"center_x":.5, "center_y":.65}
+            halign: 'center'
+            font_name:'poppins'
+        MDLabel:
+            text: "Sponsorisé par Mamy"
+            pos_hint:{"center_x":.5, "center_y":.2}
+            halign: 'center'
+            font_name:'poppins'
+            font_size: 12
+        MDLabel:
+            text: "Application de rapport de panne"
+            pos_hint:{"center_x":.5, "center_y":.15}
+            halign: 'center'
+            font_size: 12
+            font_name:'poppins'
+        MDLabel:
+            text: "Version 1.0.0"
+            pos_hint:{"center_x":.5, "center_y":.1}
+            halign: 'center'
+            font_size: 12
+            font_name:'poppins'

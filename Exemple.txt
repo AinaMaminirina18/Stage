@@ -1,0 +1,54 @@
+from kivymd.app import MDApp
+from kivymd.uix.screen import MDScreen
+from kivymd.uix.button import MDRaisedButton
+from kivy.lang import Builder
+
+KV = '''
+BoxLayout:
+    orientation: 'horizontal'
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: '8dp'
+        padding: '8dp'
+
+        MDRaisedButton:
+            text: 'Bouton 1'
+            on_release: app.change_content('Contenu 1')
+
+        MDRaisedButton:
+            text: 'Bouton 2'
+            on_release: app.change_content('Contenu 2')
+
+        MDRaisedButton:
+            text: 'Bouton 3'
+            on_release: app.change_content('Contenu 3')
+
+        MDRaisedButton:
+            text: 'Bouton 4'
+            on_release: app.change_content('Contenu 4')
+
+    MDScreen:
+        id: content_screen
+        md_bg_color: app.theme_cls.bg_dark
+        BoxLayout:
+            orientation: 'vertical'
+            padding: '8dp'
+            MDLabel:
+                id: content_label
+                text: 'Contenu initial'
+                theme_text_color: 'Custom'
+                text_color: app.theme_cls.text_color
+'''
+
+
+class MyApp(MDApp):
+    def build(self):
+        return Builder.load_string(KV)
+
+    def change_content(self, new_content):
+        self.root.ids.content_label.text = new_content
+
+
+if __name__ == "__main__":
+    MyApp().run()

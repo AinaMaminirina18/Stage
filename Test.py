@@ -1,0 +1,59 @@
+from kivy.lang import Builder
+
+from kivymd.app import MDApp
+
+
+class Test(MDApp):
+
+    def build(self):
+        self.theme_cls.material_style = "M3"
+        self.theme_cls.theme_style = "Light"
+        return Builder.load_string(
+            '''
+MDScreen:
+
+    MDBottomNavigation:
+        panel_color: "#9C7E43"
+        selected_color_background: "orange"
+        text_color_active: "lightgrey"
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: 'Mail'
+            icon: 'gmail'
+            badge_icon: "numeric-10"
+
+            MDLabel:
+                text: 'Mail'
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: 'Twitter'
+            icon: 'twitter'
+            badge_icon: "numeric-5"
+
+            MDLabel:
+                text: 'Twitter'
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: 'LinkedIN'
+            icon: 'linkedin'
+            MDRectangleFlatButton:
+                text: 'Bonjour'
+                pos_hint:{'center_x': .5, 'center_y':.5}
+
+        MDBottomNavigationItem:
+            name: 'screen 4'
+            text: 'apple'
+            icon: 'apple'
+            MDRectangleFlatButton:
+                text: 'Salama eh!'
+                md_bg_color: '#ff00ff'
+                pos_hint:{'center_x': .5, 'center_y':.5}'''
+        )
+
+
+Test().run()
