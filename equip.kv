@@ -1,5 +1,6 @@
 MDScreen:
     name: 'rapport'
+
     MDFillRoundFlatIconButton:
         pos_hint:{"center_x":.12,"center_y":.95}
         md_bg_color:'#377BFF'
@@ -17,25 +18,32 @@ MDScreen:
         on_release:
             root.manager.transition.direction = "right"
             root.manager.current = "centre"
+            app.clear_creation_fields('ajout')
+            app.reset()
+
     MDFloatLayout:
         orientation:'vertical'
         md_bg_color: '#377BFF'
         pos_hint:{"center_x": .5, "center_y":.45}
         size_hint: .8,.8
         radius:[20]
+
         MDBoxLayout:
             md_bg_color:'#F5EC0E'
             size_hint: .4, .1
             pos_hint:{"center_x": .25, "center_y":1}
             radius:[10]
             elevation: 2
+            
             MDLabel:
                 text: 'Rapport de panne'
                 halign:'center'
                 font_size: 18
                 font_name:"poppins"
+
     MDFloatLayout:
         orientation: 'horizontal'
+
         MDFillRoundFlatIconButton:
             id: nav_icon1
             pos_hint:{"center_x":.22,"center_y":.75}
@@ -50,7 +58,8 @@ MDScreen:
             font_size: 15
             font_name:"poppins"
             size_hint: .2, None
-            on_release: app.change_color(self)
+            on_release: app.choix(self)
+
         MDFillRoundFlatIconButton:
             id: nav_icon2
             pos_hint:{"center_x":.41,"center_y":.75}
@@ -65,7 +74,9 @@ MDScreen:
             font_name:"poppins"
             font_size: 15
             size_hint: .15, None
-            on_release: app.change_color(self)
+            on_release:
+                app.choix(self)
+
         MDFillRoundFlatIconButton:
             id: nav_icon3
             pos_hint:{"center_x":.58,"center_y":.75}
@@ -80,7 +91,8 @@ MDScreen:
             font_name:"poppins"
             font_size: 15
             size_hint: .15, None
-            on_release: app.change_color(self)
+            on_release: app.choix(self)
+
         MDFillRoundFlatIconButton:
             id: nav_icon4
             pos_hint:{"center_x":.775,"center_y":.75}
@@ -95,66 +107,74 @@ MDScreen:
             font_name:"poppins"
             font_size: 15
             size_hint: .2, None
-            on_release: app.change_color(self)
+            on_release: app.choix(self)
 
         MDLabel:
-            text:"Date de la panne"
-            pos_hint:{"center_x":.63,"center_y":.67}
+            text:"Date de la panne:"
+            pos_hint:{"center_x":.63,"center_y":.66}
             font_name: "poppins"
             theme_text_color:'Custom'
             text_color: 'white'
             font_size: 14
 
         MDTextField:
+            id: date
+            disabled: True
             mode: 'round'
             hint_text_color_focus: 'black'
-            hint_text_color_normal: 'black'
             text_color_focus: 'black'
             font_name:"poppins"
-            pos_hint:{"center_x":.25,"center_y":.6}
+            pos_hint:{"center_x":.22,"center_y":.6}
             line_color_focus: 'white'
             fill_color_normal: 'white'
             line_color_normal: 'white'
             size_hint: .2,None
-            radius:[10]
 
         MDIconButton:
             icon:'./Image/calendar_month.png'
-            pos_hint:{"center_x":.35,"center_y":.6}
+            pos_hint:{"center_x":.3,"center_y":.6}
+            on_release: app.show_date_picker()
+
+        MDFloatLayout:
+            id: rm
+            orientation: 'horizontal'
+            pos_hint:{"center_x":.63,"center_y":.51}
+
+            MDLabel:
+                id: lab_cat
+                text:"Catégorie:"
+                pos_hint:{"center_x":.5,"center_y":.51}
+                font_name: "poppins"
+                theme_text_color:'Custom'
+                text_color: 'white'
+                font_size: 14
+                theme_text_color: 'Custom'
+
+            MDTextField:
+                id: cat
+                mode: 'round'
+                hint_text_color_focus: 'black'
+                text_color_focus: 'black'
+                theme_text_color: 'Custom'
+                font_name:"poppins"
+                pos_hint:{"center_x":.09,"center_y":.45}
+                line_color_focus: 'white'
+                fill_color_normal: '#377BFF'
+                line_color_normal: 'white'
+                size_hint: .2,None
 
         MDLabel:
-            text:"Categorie"
-            pos_hint:{"center_x":.63,"center_y":.52}
+            text:"Nom de l'équipement:"
+            pos_hint:{"center_x":.955,"center_y":.66}
             font_name: "poppins"
             theme_text_color:'Custom'
             text_color: 'white'
             font_size: 14
 
         MDTextField:
+            id: nom_equip
             mode: 'round'
             hint_text_color_focus: 'black'
-            hint_text_color_normal: 'black'
-            text_color_focus: 'black'
-            font_name:"poppins"
-            pos_hint:{"center_x":.25,"center_y":.45}
-            line_color_focus: 'white'
-            fill_color_normal: 'white'
-            line_color_normal: 'white'
-            size_hint: .2,None
-            radius:[10]
-
-        MDLabel:
-            text:"Sous-categorie"
-            pos_hint:{"center_x":.955,"center_y":.67}
-            font_name: "poppins"
-            theme_text_color:'Custom'
-            text_color: 'white'
-            font_size: 14
-
-        MDTextField:
-            mode: 'round'
-            hint_text_color_focus: 'black'
-            hint_text_color_normal: 'black'
             text_color_focus: 'black'
             font_name:"poppins"
             pos_hint:{"center_x":.65,"center_y":.6}
@@ -162,21 +182,22 @@ MDScreen:
             fill_color_normal: 'white'
             line_color_normal: 'white'
             size_hint: .4,None
-            size_hint: .4,.1
             radius:[10]
 
         MDLabel:
-            text:"Nom du materiel"
-            pos_hint:{"center_x":.955,"center_y":.52}
+            text:"Sous-catégorie:"
+            pos_hint:{"center_x":.955,"center_y":.51}
             font_name: "poppins"
             theme_text_color:'Custom'
             text_color: 'white'
             font_size: 14
 
         MDTextField:
+            id: se
             mode: 'round'
             hint_text_color_focus: 'black'
-            hint_text_color_normal: 'black'
+            helper_text: "*Ne rien écrire si il y en a pas"
+            helper_text_mode: 'on_focus'
             text_color_focus: 'black'
             font_name:"poppins"
             pos_hint:{"center_x":.65,"center_y":.45}
@@ -194,58 +215,71 @@ MDScreen:
             text_color: 'white'
             font_size: 14
 
-        MDBoxLayout:
-            pos_hint:{"center_x":.425,"center_y":.3}
+        MDFloatLayout:
+            pos_hint:{"center_x":.37,"center_y":.3}
             md_bg_color: "white"
             orientation:'horizontal'
-            size_hint: .6,.09
-            radius:[10]
+            size_hint: .5,.07
+            radius:[15]
+
             MDLabel:
-                text:"De"
+                text:"De:"
                 font_name:"poppins"
-                pos_hint:{"center_x":.425,"center_y":.49}
-                halign:'center'
+                pos_hint:{"center_x":.53,"center_y":.49}
 
             MDTextField:
+                id: debut
                 mode: 'round'
-                hint_text_color_focus: 'black'
-                hint_text_color_normal: 'black'
+                hint_text: 'debut'
+                hint_text_color_normal: 'white'
+                hint_text_color_focus: 'white'
+                text_color_normal: 'black'
                 text_color_focus: 'black'
                 font_name:"poppins"
-                pos_hint:{"center_x":0,"center_y":.495}
+                pos_hint:{"center_x":.23,"center_y":.495}
                 line_color_focus: 'white'
                 fill_color_normal: 'white'
                 line_color_normal: 'white'
-                size_hint: .4,None
-                radius:[10]
+                size_hint: .3,None
+                on_focus: app.show_time_picker(self, self.focus)
 
             MDLabel:
-                text:"À"
+                text:"À:"
                 font_name:"poppins"
-                pos_hint:{"center_x":.55,"center_y":.49}
-                halign:'center'
+                pos_hint:{"center_x":1,"center_y":.49}
 
             MDTextField:
+                id:fin
                 mode: 'round'
-                hint_text_color_focus: 'black'
-                hint_text_color_normal: 'black'
                 text_color_focus: 'black'
+                text_color_normal: 'black'
+                hint_text: 'fin'
+                hint_text_color_normal: 'white'
+                hint_text_color_focus: 'white'
                 font_name:"poppins"
-                pos_hint:{"center_x":0,"center_y":.495}
+                pos_hint:{"center_x":0.685,"center_y":.495}
                 line_color_focus: 'white'
                 fill_color_normal: 'white'
                 line_color_normal: 'white'
-                size_hint: .4,None
+                size_hint: .3,None
+                on_focus: app.show_time_picker(self, self.focus)
 
         MDFillRoundFlatButton:
             pos_hint:{"center_x":.5,"center_y":.13}
             md_bg_color:'white'
+            active:True
             text:'Annuler'
             theme_text_color:'Custom'
             text_color: 'black'
             font_name:"poppins"
             font_size: 15
             size_hint: .2,None
+            on_release:
+                root.manager.current = 'centre'
+                root.manager.transition.direction = "right"
+                app.clear_creation_fields('ajout')
+                app.reset()
+
 
         MDFillRoundFlatButton:
             pos_hint:{"center_x":.75,"center_y":.13}
@@ -256,3 +290,5 @@ MDScreen:
             font_name:"poppins"
             font_size: 15
             size_hint: .2,None
+            on_release:
+                app.enregistrer(date.text,cat.text,nom_equip.text,se.text,debut.text,fin.text)
