@@ -1,57 +1,127 @@
 MDScreen:
-    name:'login'
-    md_bg_color : '#c3c3c3'
-    MDCard:
-        size_hint: None, None
-        size: 300, 400
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 2
-        padding: 25
-        spacing: 25
-        orientation: 'vertical'
+    name: "login"
+    MDFloatLayout:
+        md_bg_color: '#377BFF'
+        pos_hint:{"center_x":.685, "center_y":.5}
+        size_hint:.3, .7
+        radius:[20]
 
         MDLabel:
-            id: welcome_label
-            text: "Tongasoa"
-            font_size: 35
+            text: "Connexion"
+            pos_hint:{"center_x":.5, "center_y":.8}
             halign: 'center'
-            size_hint_y: None
-            padding_y: 25
+            font_size: 25
+            font_name:'poppins'
+            theme_text_color: 'Custom'
+            text_color: 'white'
+
+        MDLabel:
+            text: 'Identifiant :'
+            font_size: 13
+            font_name:'poppins'
+            theme_text_color: 'Custom'
+            text_color: 'white'
+            pos_hint: {"center_x": .73, "center_y": .67}
 
         MDTextField:
             id: user
-            hint_text: "Username"
-            icon_right: "account"
-            size_hint_x: None
-            width: 200
-            font_size: 18
-            pos_hint: {"center_x":.5, "center_y": .5}
+            mode: 'round'
+            pos_hint:{"center_x": .5, "center_y":.6}
+            size_hint: .6, None
+            font_name:'poppins'
+            line_color_focus: 'white'
+            line_color_normal: 'white'
+            text_color_focus: 'black'
+            text_color_normal: 'black'
+            fill_color_normal: 'white'
 
-        MDFloatLayout:
-            orientation:'horizontal'
-            MDTextField:
-                id: password
-                hint_text: "Password"
-                size_hint_x: None
-                width: 200
-                font_size: 18
-                pos_hint: {"center_x":.5, "center_y": .5}
-                password: True
+        MDLabel:
+            text: 'Mot de passe :'
+            font_size: 13
+            font_name:'poppins'
+            theme_text_color: 'Custom'
+            text_color: 'white'
+            pos_hint: {"center_x": .73, "center_y": .49}
 
-            MDIconButton:
-                icon: "eye-off"
-                pos_hint: {"center_x":.85, "center_y": .5}
-                pos: password.width - self.width + dp(8), 0
-                theme_text_color: "Hint"
-                on_release:
-                    self.icon = "eye" if self.icon == "eye-off" else "eye-off"
-                    password.password = False if password.password is True else True
+        MDTextField:
+            id: password
+            mode: 'round'
+            pos_hint:{"center_x": .5, "center_y":.42}
+            md_bg_color: 'white'
+            size_hint: .6, None
+            font_name:'poppins'
+            line_color_focus: 'white'
+            line_color_normal: 'white'
+            text_color_focus: 'black'
+            text_color_normal: 'black'
+            fill_color_normal: 'white'
+            password: True
 
-        MDRoundFlatButton:
-            text: "Entrer"
-            font_size: 19
-            pos_hint: {"center_x": 0.5, "center_y":.4}
-            size_hint_x: 1
-            on_press:
-                app.logger()
-                root.manager.transition.direction = "left"
+        MDIconButton:
+            icon: './Image/eye.png'
+            pos_hint:{"center_x": .74, "center_y":.42}
+            on_release:
+                self.icon = "./Image/eye.png" if self.icon == "eye-off" else "eye-off"
+                password.password = False if password.password is True else True
+
+        MDRaisedButton:
+            text: 'Connecter'
+            size_hint: .5, None
+            pos_hint:{"center_x": .5, "center_y":.2}
+            font_size: 15
+            font_name:'poppins'
+            md_bg_color: '#F5EC0E'
+            on_release: app.log_in(user.text, password.text)
+
+        MDRaisedButton:
+            text: 'Créer un compte'
+            size_hint: .5, None
+            pos_hint:{"center_x": .5, "center_y":.1}
+            font_size: 15
+            font_name:'poppins'
+            md_bg_color: 'white'
+            on_release:
+                root.manager.current = 'creation'
+                root.manager.transition.direction = 'right'
+                user.text = ''
+                password.text = ''
+
+    MDFloatLayout:
+        md_bg_color: '#377BFF'
+        pos_hint:{"center_x":.4, "center_y":.5}
+        size_hint:.3, .8
+        radius:[20]
+
+        Image:
+            source: 'Logo.png'
+            pos_hint:{"center_x":.5, "center_y":.8}
+            size_hint: .4, .4
+
+        MDLabel:
+            text: "Rapport de maintenance"
+            pos_hint:{"center_x":.5, "center_y":.65}
+            theme_text_color:'Custom'
+            text_color: 'white'
+            halign: 'center'
+            font_name:'poppins'
+
+        MDLabel:
+            text: "Sponsorisé par Mamy"
+            pos_hint:{"center_x":.5, "center_y":.2}
+            halign: 'center'
+            font_name:'poppins'
+            font_size: 12
+
+        MDLabel:
+            text: "Application de rapport de panne"
+            pos_hint:{"center_x":.5, "center_y":.15}
+            halign: 'center'
+            font_size: 12
+            font_name:'poppins'
+
+        MDLabel:
+            text: "Version 1.0.0"
+            pos_hint:{"center_x":.5, "center_y":.1}
+            halign: 'center'
+            font_size: 12
+            font_name:'poppins'
