@@ -1,0 +1,49 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+MDScreen:
+    name: 'Export'
+    MDNavigationLayout:
+
+        ScreenManager:
+
+            MDScreen:
+
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    MDBoxLayout:
+
+                        MDNavigationRail:
+                            id: navigation_rail
+                            md_bg_color: "#377BFF"
+                            selected_color_background: "#19F498"
+                            ripple_color_item: "#19F498"
+                            on_item_release: app.switch_screen(*args)
+                            padding: 24
+
+                            MDNavigationRailMenuButton:
+                                icon:'arrow-left'
+                                text: 'Retour'
+                                on_press:
+                                    root.manager.transition.direction = "right"
+                                    root.manager.current = "centre"
+
+                            MDNavigationRailItem:
+                                text: "Python"
+                                icon: "language-python"
+
+                            MDNavigationRailItem:
+                                text: "JavaScript"
+                                icon: "language-javascript"
+
+                            MDNavigationRailItem:
+                                text: "CPP"
+                                icon: "language-cpp"
+
+                            MDNavigationRailItem:
+                                text: "Swift"
+                                icon: "language-swift"
+
+                        ScreenManager:
+                            id: screen_manager
+                            transition:
+                                FadeTransition(duration=.2, clearcolor=app.theme_cls.bg_dark)

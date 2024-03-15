@@ -1,0 +1,119 @@
+from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
+from kivymd.app import MDApp
+from kivymd.uix.button import MDRaisedButton
+from kivymd.uix.label import MDLabel
+from kivymd.uix.bottomnavigation import MDBottomNavigation, MDBottomNavigationItem
+from kivy.uix.screenmanager import ScreenManager, Screen
+
+Builder.load_string('''
+<MyScreenManager>:
+    orientation: 'vertical'
+    ScreenManager:
+        id: screen_manager
+        FirstScreen:
+        SecondScreen:
+
+<FirstScreen>:
+    name: 'first'
+    BoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: 'Premier écran'
+            halign: 'center'
+        MDRaisedButton:
+            text: "Passer à l'écran suivant"
+            on_press: root.manager.current = 'second'
+
+<SecondScreen>:
+    name: 'second'
+    BoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: 'Deuxième écran'
+            halign: 'center'
+        MDRaisedButton:
+            text: "Revenir à l'écran précédent"
+            on_press: root.manager.current = 'first'
+''')
+
+class MyScreenManager(BoxLayout):
+    def __init__(self, **kwargs):
+        super(MyScreenManager, self).__init__(**kwargs)
+
+        self.orientation = 'vertical'
+
+        self.screen_manager = ScreenManager()
+        self.add_widget(self.screen_manager)
+
+        self.first_screen = FirstScreen(name='first')
+        self.second_screen = SecondScreen(name='second')
+
+        self.screen_manager.add_widget(self.first_screen)
+        self.screen_manager.add_widget(self.second_screen)
+
+        self.bottom_navigation = MDBottomNavigation()
+        self.bottom_navigation.bind(on_tab_press=self.on_tab_press)
+
+        tab1 = MDBottomNavigationItem(name='first', text='First', icon='android')
+        tab2 = MDBottomNavigationItem(name='second', text='Second', icon='apple')
+
+        self.bottom_navigation.add_widget(tab1)
+        self.bottom_navigation.add_widget(tab2)
+
+        self.add_widget(self.bottom_navigation)
+
+    def on_tab_press(self, instance, tab_name):
+        self.screen_manager.current = tab_name
+
+class FirstScreen(Screen):
+    pass
+
+class SecondScreen(Screen):
+    pass
+
+class MyApp(MDApp):
+    def build(self):
+        return MyScreenManager()
+
+if __name__ == '__main__':
+    MyApp().run()
+
+
+
+
+    MDCard:
+        orientation:'vertical'
+        md_bg_color: '#377BFF'
+        pos_hint:{"center_x":.4, "center_y":.5}
+        size_hint:.3, .8
+        radius:[20]
+        spacing: 1
+        elevation: 1
+        Image:
+            source: './Image/Ispm.png'
+            pos_hint:{"center_x":.5, "center_y":.5}
+            size_hint: 4, .4
+        MDLabel:
+            text: "{App Name}"
+            pos_hint:{"center_x":.5, "center_y":.65}
+            halign: 'center'
+            font_name:'poppins'
+        MDLabel:
+            text: "Sponsorisé par Mamy"
+            pos_hint:{"center_x":.5, "center_y":.5}
+            halign: 'center'
+            font_name:'poppins'
+            font_size: 12
+        MDLabel:
+            text: "Application de rapport de panne"
+            pos_hint:{"center_x":.5, "center_y":.15}
+            halign: 'center'
+            font_size: 12
+            font_name:'poppins'
+        MDLabel:
+            text: "Version 1.0.0"
+            pos_hint:{"center_x":.5, "center_y":.1}
+            halign: 'center'
+            font_size: 12
+            font_name:'poppins'
