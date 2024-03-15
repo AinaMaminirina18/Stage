@@ -1,0 +1,117 @@
+MDScreen:
+    name: 'creation'
+    MDFloatLayout:
+        orientation:'vertical'
+        md_bg_color: '#377BFF'
+        pos_hint:{"center_x": .5, "center_y":.5}
+        size_hint: .8,.8
+        radius:[20]
+        MDBoxLayout:
+            md_bg_color: 'lightgrey'
+            pos_hint:{"center_x": .2, "center_y":.925}
+            size_hint: .4,.15
+            radius: [20, 0, 20, 0]
+            MDLabel:
+                text: "CREATION D'UN NOUVEAU COMPTE"
+                halign: 'center'
+                font_size: 15
+                font_name: 'poppins'
+        MDTextField:
+            mode: 'round'
+            hint_text:'Votre nom'
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.25,"center_y":.75}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .4,.08
+            radius:[10]
+        MDTextField:
+            mode: 'round'
+            hint_text:'Votre prénom'
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.25,"center_y":.6}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .4,.08
+            radius:[10]
+        MDTextField:
+            mode: 'round'
+            hint_text:'Votre poste'
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.25,"center_y":.45}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .4,.08
+            radius:[10]
+        MDTextField:
+            mode: 'round'
+            hint_text: "Votre identifiant ou nom d'utilisateur"
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.75,"center_y":.75}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .4,.08
+            radius:[10]
+        MDTextField:
+            mode: 'round'
+            hint_text:'Votre mot de passe'
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.75,"center_y":.6}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .4,.08
+            radius:[10]
+        MDTextField:
+            mode: 'round'
+            hint_text:'Confirmer votre mot de passe'
+            hint_text_color_focus: 'black'
+            hint_text_color_normal: 'black'
+            text_color_focus: 'black'
+            font_name:"poppins"
+            pos_hint:{"center_x":.75,"center_y":.45}
+            line_color_focus: 'white'
+            fill_color_normal: 'white'
+            line_color_normal: 'white'
+            size_hint: .4,.08
+            radius:[10]
+
+        MDFillRoundFlatButton:
+            pos_hint:{"center_x":.3,"center_y":.13}
+            md_bg_color:'white'
+            text:'Annuler'
+            theme_text_color:'Custom'
+            text_color: 'black'
+            font_name:"poppins"
+            font_size: 15
+            size_hint: .25,None
+
+        MDFillRoundFlatButton:
+            pos_hint:{"center_x":.7,"center_y":.13}
+            md_bg_color:'#F5EC0E'
+            text:'Créer un compte'
+            theme_text_color:'Custom'
+            text_color: 'black'
+            font_name:"poppins"
+            font_size: 15
+            size_hint: .25,None
+            on_release: root.manager.current = 'centre'
